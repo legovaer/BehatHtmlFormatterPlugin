@@ -7,6 +7,7 @@ php:
 
 before_script:
   - composer install --dev
+  - export PATH=./vendor/bin:$PATH
 
 script:
   - phpspec run -f pretty
