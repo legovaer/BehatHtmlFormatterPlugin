@@ -5,10 +5,13 @@ php:
   - 5.4
   - 5.5
 
-before_script:
+env:
+  - PATH=$PATH:/home/travis/.composer/vendor/bin
+
+install:
+  - composer self-update
   - composer install --dev
-  - export PATH=./vendor/bin:$PATH
 
 script:
-  - phpspec run -f pretty
-  - behat -fprogress --strict
+  - vendor/bin/phpspec run -f pretty --no-interaction
+  - vendor/bin/behat -fprogress --strict
